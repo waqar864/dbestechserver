@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.11.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.9"
+  },
+  "name": "dbestech_ecomly_server",
+  "version": "1.0.0",
+  "description": "dbestech server development",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waqar864/dbestechserver.git"
+  },
+  "author": "waqarkhan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/waqar864/dbestechserver/issues"
+  },
+  "homepage": "https://github.com/waqar864/dbestechserver#readme"
+}
