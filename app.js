@@ -6,23 +6,19 @@ const mongoose = require("mongoose");
 require("dotenv/config");
 const app = express();
 const env = process.env;
-
+const API = env.API_URL;
 app.use(bodyParser.json());
 app.use(morgan("combined"));
 app.use(cors());
 app.options("*", cors());
 
-app.get("/", (req, res) => {
-    return res.status(404).send('sorry, cant find the server');
-});
+const authRouter = require("./routes/auth");
 
-app.get('/watch/videos/:id',(request, response) =>{
-    return response.json({
-        videoId: request.params.id
-    });
-});
+app.use(`${API}/`,authRouter);
 
-const hostname = env.HOSTNAME;
+
+
+const hostname = env.HOST;
 const port = env.PORT;
 
 mongoose.connect(env.MONGODB_CONNECTION_STRING).then(() => {
@@ -33,15 +29,6 @@ mongoose.connect(env.MONGODB_CONNECTION_STRING).then(() => {
 //start server 
 
 app.listen(port,hostname, () => {
-    console.log(`Server running at http://"${hostname} :${port}`);
+    console.log(`Server running at http://${hostname}:${port}`);
 });
 
-//CRUD
-//create data
-// app.post()
-// //read data
-// app.get()
-// //update data
-// app.put()
-// //delete data
-// app.delete()
