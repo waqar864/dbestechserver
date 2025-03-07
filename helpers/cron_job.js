@@ -12,6 +12,7 @@ cron.schedule('0 0 * * *', async function (){
             });
             if(categoryProductsCount < 1) await category.deleteOne();
         }
+        console.log('CRON job completed at ', new Date());
     } catch (error) {
         console.error('CRON JOB ERROR', error);
 
