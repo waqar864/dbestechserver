@@ -194,7 +194,11 @@ exports.getProducts = async function (req, res) {
         const detailed = +req.query.detailed;
         const pageSize = 10;
 
-        const products = await Product.find().select('-reviews -ratings').skip(10).limit(pageSize);
+        const products = await Product.find().select('-reviews -rating').skip((page - 1) * pageSize).limit(pageSize);
+        if(!products) {
+            return res.status(404).json({ message: 'No products found' });
+        }
+        return res.json({ products });
     } catch (error) {
         console.error(error);
         return res.status(500).json({ type:error.name, message: error.message });
